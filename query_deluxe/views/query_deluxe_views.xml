@@ -146,7 +146,7 @@
     </record>
 
     <menuitem id="query_deluxe_menu" name="Query Deluxe" sequence="-1" groups="query_deluxe.group_query_deluxe"
-              web_icon="query_deluxe,static/description/icon.png"/>
+              web_icon="query_deluxe,static/description/icon.png" parent="base.menu_custom"/>
 
     <menuitem id="query_deluxe_submenu_querydeluxe" parent="query_deluxe.query_deluxe_menu"
               action="query_deluxe.query_deluxe_submenu_querydeluxe_action" sequence="-1"
