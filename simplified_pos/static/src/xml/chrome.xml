@@ -8,6 +8,10 @@
                      src="/point_of_sale/static/src/img/logo.png" alt="Logo"/>
                 <CashMoveButton t-if="showCashMoveButton()"/>
             </div>
+            <t t-portal="'.pos .back-to-floor-portal'" position="before">
+                <BackToFloorButton mobileSearchBarIsShown="props.mobileSearchBarIsShown"/>
+            </t>
         </xpath>
     </t>
 </templates>
+
