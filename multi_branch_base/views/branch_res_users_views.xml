@@ -8,6 +8,8 @@
             <field name="arch" type="xml">
                 <xpath expr="//page[@name='access_rights']//group" position="after">
                     <group string="Multi Branches">
+                        <field name="company_ids" widget="many2many_tags" options="{'no_create': True}" string="Allowed Companies"/>
+                        <field name="company_id" options="{'no_create': True}" required="1"/>
                         <field name="branch_ids" widget="many2many_tags" options="{'no_create': True}"/>
                         <field name="branch_id" options="{'no_create': True}" required="1"/>
                     </group>
