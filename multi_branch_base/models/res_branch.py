@@ -35,6 +35,7 @@ class Branch(models.Model):
 
     name = fields.Char(string='Branch', required=True, store=True)
     company_id = fields.Many2one('res.company', required=True, string='Company')
+    user_ids = fields.Many2many('res.users', string='Branch Employees', relation="res_branch_res_users_rel")
     street = fields.Char()
     street2 = fields.Char()
     zip = fields.Char()

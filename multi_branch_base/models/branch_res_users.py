@@ -30,7 +30,7 @@ class ResUsers(models.Model):
     _inherit = "res.users"
 
     branch_ids = fields.Many2many('res.branch', string='Allowed Branches',
-                                  domain="[('company_id', '=', company_ids)]")
+                                  domain="[('company_id', '=', company_ids)]", relation="res_branch_res_users_rel")
     branch_id = fields.Many2one("res.branch", string='Default Branch',
                                 default=False,
                                 domain="[('id', '=', branch_ids)]")
