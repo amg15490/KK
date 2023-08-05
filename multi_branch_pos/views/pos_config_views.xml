@@ -72,4 +72,7 @@
             </xpath>
         </field>
     </record>
+
+    <menuitem action="multi_branch_base.action_res_branch_form" id="menu_action_res_branch_form_pos" parent="point_of_sale.menu_point_root"/>
+
 </odoo>
