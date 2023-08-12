@@ -2,6 +2,14 @@
 
 <templates id="pos_order_note_template" inherit_id="point_of_sale.template" xml:space="preserve">
 
+	<t t-name="SetSaleOrderButton" owl="1">
+	<div/>
+<!--        <div class="control-button o_sale_order_button">-->
+<!--            <i class="fa fa-link" role="img" aria-label="Set Sale Order"-->
+<!--               title="Set Sale Order" /> Quotation/Order-->
+<!--        </div>-->
+    </t>
+
 	<t t-name="point_of_sale.CashMoveButton" owl="1">
 		<div/>
 <!--        <div class="cash-move-button" t-on-click="onClick">-->
