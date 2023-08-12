@@ -1,0 +1,51 @@
+{
+  "name": "كشرى كده",
+  "short_name": "كشرى كده",
+  "lang": "en-US",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "black",
+  "theme_color": "#ff8d2f",
+  "description": "كشرى كده",
+  "icons": [
+    {
+      "src": "/pos_home_delivery/static/assets/images/logo2/favicon.png",
+      "sizes": "40x40",
+      "type": "image/png"
+    },
+    {
+      "src": "/pos_home_delivery/static/assets/images/logo2/48.png",
+      "sizes": "48x48",
+      "type": "image/png"
+    },
+    {
+      "src": "/pos_home_delivery/static/assets/images/logo2/72.png",
+      "sizes": "72x72",
+      "type": "image/png"
+    },
+    {
+      "src": "/pos_home_delivery/static/assets/images/logo2/96.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/pos_home_delivery/static/assets/images/logo2/144.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/pos_home_delivery/static/assets/images/logo2/168.png",
+      "sizes": "168x168",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/pos_home_delivery/static/assets/images/logo2/512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

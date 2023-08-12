@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="my_menu">
+            <t t-call="pos_home_delivery.my_layout">
+                <t t-set="content">
+                    <!-- header start -->
+                    <header>
+                        <div class="header-panel-lg" dir="rtl">
+                            <div class="custom-container">
+                                <img src="pos_home_delivery/static/assets/images/background.png"
+                                     class="img-fluid header-panel-lg"/>
+                            </div>
+                        </div>
+                    </header>
+                    <!-- header end -->
+
+                    <!-- Restaurant details section start -->
+                    <section>
+                        <div class="custom-container" dir="rtl">
+                            <div class="restaurant-details-box">
+                                <div class="restaurant-head">
+                                    <div class="name">
+                                        <img src="pos_home_delivery/static/assets/images/logo.png"
+                                             class="img-fluid restaurant-logo"/>
+                                        <div class="d-block ms-2">
+                                            <h3>
+                                                كشرى كده
+                                            </h3>
+                                            <h6>كشرى و طواجن و حلويات</h6>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                                <div class="restaurant-details">
+                                    <ul class="distance">
+                                        <li>
+                                            <h5><i class="ri-map-pin-fill theme-color"/>فروع المطعم
+                                            </h5>
+                                        </li>
+                                        <li>
+                                            <i class="ri-map-pin-fill theme-color"/>
+                                            شارع اللبيني_ بجوار مدرسة علوي_ أمام شارع الشيشيني.
+                                        </li>
+                                        <li>
+                                            <i class="ri-map-pin-fill theme-color"></i>
+                                            ۳ (أ) مساكن الشركة الوطنية للإسكان_ أخر شارع فيصل.
+                                        </li>
+                                        <li>
+                                            <i class="ri-map-pin-fill theme-color"></i>
+                                            ۱ شارع عباس أنور_ بجوار فلفلة_ مريوطية_ فيصل.
+                                        </li>
+                                    </ul>
+
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <!-- Restaurant details section end -->
+                    <section class="food-list-section section-b-space">
+                        <div class="custom-container" dir="rtl">
+                            <div class="list-box">
+                                <h3 class="fw-semibold dark-text">القائمة</h3>
+                                <div class="accordion food-accordion" id="accordionPanelsStayOpenaccordion1">
+                                    <ul class="nav nav-pills" id="pills-tab" role="tablist">
+                                        <li class="nav-item" role="presentation">
+                                            <button class="nav-link active" id="koshery" data-bs-toggle="pill"
+                                                    data-bs-target="#new" type="button" role="tab">كشرى
+                                            </button>
+                                        </li>
+
+                                        <li class="nav-item" role="presentation">
+                                            <button class="nav-link" id="tagen" data-bs-toggle="pill"
+                                                    data-bs-target="#used"
+                                                    type="button" role="tab">طواجن
+                                            </button>
+                                        </li>
+
+                                        <li class="nav-item" role="presentation">
+                                            <button class="nav-link " id="sweets" data-bs-toggle="pill"
+                                                    data-bs-target="#expired" type="button" role="tab">حلويات
+                                            </button>
+                                        </li>
+                                        <li class="nav-item" role="presentation">
+                                            <button class="nav-link" id="extra" data-bs-toggle="pill"
+                                                    data-bs-target="#extra"
+                                                    type="button" role="tab">اضافات
+                                            </button>
+                                        </li>
+                                    </ul>
+                                    <t t-set="products" t-value="request.env['product.template'].sudo().search([])"/>
+                                    <t t-set="category" t-value="request.env['product.category'].sudo().search([])"/>
+                                    <div class="tab-content" id="pills-tabContent">
+                                        <div class="tab-pane fade show active" id="new" role="tabpanel"
+                                             tabindex="0">
+                                            <section class="section-b-space">
+                                                <div class="row g-3 gx-3">
+
+                                                    <t t-foreach="products" t-as="menu">
+                                                        <!--                                                        print(menu.categ_id.name)-->
+                                                        <t t-if="menu.categ_id.name == 'كشرى'">
+                                                            <div class="col-6">
+                                                                <div class="voucher-box">
+                                                                    <div class="voucher-img">
+                                                                        <div class="product-img">
+                                                                            <a href="#product-popup"
+                                                                               data-bs-toggle="offcanvas">
+                                                                                <t t-if="not menu.image_1920">
+                                                                                    <img src="pos_home_delivery\static\assets\images\vp1.png"
+                                                                                         class="img-fluid img"
+                                                                                         style="width:210px;height:220px"
+                                                                                         alt="vp1"/>
+                                                                                </t>
+                                                                                <t t-if="menu.image_1920">
+                                                                                    <img t-attf-src="data:image/png;base64,{{ menu.image_1920 }}"
+                                                                                         class="img-fluid img"
+                                                                                         style="width:210px;height:220px"
+                                                                                         alt="vp1"/>
+                                                                                </t>
+
+                                                                            </a>
+                                                                            <div class="add-btn">
+                                                                                <a class="btn btn-outline"
+                                                                                   data-bs-target="#add-product"
+                                                                                   data-bs-toggle="modal">
+                                                                                    <span>EGP
+                                                                                        <t t-esc="menu.list_price"/>
+                                                                                    </span>
+                                                                                </a>
+                                                                            </div>
+                                                                            <!--                                                                            <div class="plus-minus">-->
+                                                                            <!--                                                                                <i class="ri-subtract-line sub"></i>-->
+                                                                            <!--                                                                                <input type="number" value="1" min="1"-->
+                                                                            <!--                                                                                       max="10"/>-->
+                                                                            <!--                                                                                <i class="ri-add-line add"></i>-->
+                                                                            <!--                                                                            </div>-->
+                                                                            <br/>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="voucher-content">
+                                                                        <h2 style="text-align: center;">
+                                                                            <t t-esc="menu.name"/>
+                                                                        </h2>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                        </t>
+                                                    </t>
+                                                </div>
+                                            </section>
+                                        </div>
+                                        <div class="tab-pane fade" id="used" role="tabpanel"
+                                             tabindex="0">
+                                            <section class="section-b-space">
+                                                <div class="row g-3 gx-3">
+
+                                                    <t t-foreach="products" t-as="menu">
+                                                        <!--                                                        print(menu.categ_id.name)-->
+                                                        <t t-if="menu.categ_id.name == 'طواجن'">
+                                                            <div class="col-6">
+                                                                <div class="voucher-box">
+                                                                    <div class="voucher-img">
+                                                                        <div class="product-img">
+                                                                            <a href="#product-popup"
+                                                                               data-bs-toggle="offcanvas">
+                                                                                <t t-if="not menu.image_1920">
+                                                                                    <img src="pos_home_delivery\static\assets\images\vp1.png"
+                                                                                         class="img-fluid img"
+                                                                                         style="width:210px;height:220px"
+                                                                                         alt="vp1"/>
+                                                                                </t>
+                                                                                <t t-if="menu.image_1920">
+                                                                                    <img t-attf-src="data:image/png;base64,{{ menu.image_1920 }}"
+                                                                                         class="img-fluid img"
+                                                                                         style="width:210px;height:220px"
+                                                                                         alt="vp1"/>
+                                                                                </t>
+
+                                                                            </a>
+                                                                            <div class="add-btn">
+                                                                                <a class="btn btn-outline"
+                                                                                   data-bs-target="#add-product"
+                                                                                   data-bs-toggle="modal">
+                                                                                    <span>EGP
+                                                                                        <t t-esc="menu.list_price"/>
+                                                                                    </span>
+                                                                                </a>
+                                                                            </div>
+                                                                            <!--                                                                            <div class="plus-minus">-->
+                                                                            <!--                                                                                <i class="ri-subtract-line sub"></i>-->
+                                                                            <!--                                                                                <input type="number" value="1" min="1"-->
+                                                                            <!--                                                                                       max="10"/>-->
+                                                                            <!--                                                                                <i class="ri-add-line add"></i>-->
+                                                                            <!--                                                                            </div>-->
+                                                                            <br/>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="voucher-content">
+                                                                        <h2 style="text-align: center;">
+                                                                            <t t-esc="menu.name"/>
+                                                                        </h2>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                        </t>
+                                                    </t>
+                                                </div>
+                                            </section>
+                                        </div>
+                                        <div class="tab-pane fade" id="expired" role="tabpanel"
+                                             tabindex="0">
+                                            <section class="section-b-space">
+                                                <div class="row g-3 gx-3">
+
+                                                    <t t-foreach="products" t-as="menu">
+                                                        <!--                                                        print(menu.categ_id.name)-->
+                                                        <t t-if="menu.categ_id.name == 'حلويات'">
+                                                            <div class="col-6">
+                                                                <div class="voucher-box">
+                                                                    <div class="voucher-img">
+                                                                        <div class="product-img">
+                                                                            <a href="#product-popup"
+                                                                               data-bs-toggle="offcanvas">
+                                                                                <t t-if="not menu.image_1920">
+                                                                                    <img src="pos_home_delivery\static\assets\images\vp1.png"
+                                                                                         class="img-fluid img"
+                                                                                         style="width:210px;height:220px"
+                                                                                         alt="vp1"/>
+                                                                                </t>
+                                                                                <t t-if="menu.image_1920">
+                                                                                    <img t-attf-src="data:image/png;base64,{{ menu.image_1920 }}"
+                                                                                         class="img-fluid img"
+                                                                                         style="width:210px;height:220px"
+                                                                                         alt="vp1"/>
+                                                                                </t>
+
+                                                                            </a>
+                                                                            <div class="add-btn">
+                                                                                <a class="btn btn-outline"
+                                                                                   data-bs-target="#add-product"
+                                                                                   data-bs-toggle="modal">
+                                                                                    <span>EGP
+                                                                                        <t t-esc="menu.list_price"/>
+                                                                                    </span>
+                                                                                </a>
+                                                                            </div>
+                                                                            <!--                                                                            <div class="plus-minus">-->
+                                                                            <!--                                                                                <i class="ri-subtract-line sub"></i>-->
+                                                                            <!--                                                                                <input type="number" value="1" min="1"-->
+                                                                            <!--                                                                                       max="10"/>-->
+                                                                            <!--                                                                                <i class="ri-add-line add"></i>-->
+                                                                            <!--                                                                            </div>-->
+                                                                            <br/>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="voucher-content">
+                                                                        <h2 style="text-align: center;">
+                                                                            <t t-esc="menu.name"/>
+                                                                        </h2>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                        </t>
+                                                    </t>
+                                                </div>
+                                            </section>
+                                        </div>
+                                         <div class="tab-pane fade" id="used" role="tabpanel" aria-labelledby="#extra"
+                                             tabindex="0">
+                                            <section class="section-b-space">
+                                                <div class="row g-3 gx-3">
+
+                                                    <t t-foreach="products" t-as="menu">
+                                                        <!--                                                        print(menu.categ_id.name)-->
+                                                        <t t-if="menu.categ_id.name == 'اضافات'">
+                                                            <div class="col-6">
+                                                                <div class="voucher-box">
+                                                                    <div class="voucher-img">
+                                                                        <div class="product-img">
+                                                                            <a href="#product-popup"
+                                                                               data-bs-toggle="offcanvas">
+                                                                                <t t-if="not menu.image_1920">
+                                                                                    <img src="pos_home_delivery\static\assets\images\vp1.png"
+                                                                                         class="img-fluid img"
+                                                                                         style="width:210px;height:220px"
+                                                                                         alt="vp1"/>
+                                                                                </t>
+                                                                                <t t-if="menu.image_1920">
+                                                                                    <img t-attf-src="data:image/png;base64,{{ menu.image_1920 }}"
+                                                                                         class="img-fluid img"
+                                                                                         style="width:210px;height:220px"
+                                                                                         alt="vp1"/>
+                                                                                </t>
+
+                                                                            </a>
+                                                                            <div class="add-btn">
+                                                                                <a class="btn btn-outline"
+                                                                                   data-bs-target="#add-product"
+                                                                                   data-bs-toggle="modal">
+                                                                                    <span>EGP
+                                                                                        <t t-esc="menu.list_price"/>
+                                                                                    </span>
+                                                                                </a>
+                                                                            </div>
+                                                                            <!--                                                                            <div class="plus-minus">-->
+                                                                            <!--                                                                                <i class="ri-subtract-line sub"></i>-->
+                                                                            <!--                                                                                <input type="number" value="1" min="1"-->
+                                                                            <!--                                                                                       max="10"/>-->
+                                                                            <!--                                                                                <i class="ri-add-line add"></i>-->
+                                                                            <!--                                                                            </div>-->
+                                                                            <br/>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="voucher-content">
+                                                                        <h2 style="text-align: center;">
+                                                                            <t t-esc="menu.name"/>
+                                                                        </h2>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                        </t>
+                                                    </t>
+                                                </div>
+                                            </section>
+                                        </div>
+                                    </div>
+                                    <!--                                        </t>-->
+                                    <!--                                    </t>-->
+                                </div>
+                            </div>
+
+                        </div>
+                    </section>
+
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

@@ -1,0 +1,37 @@
+/*=====================
+    Empty Tab CSS start
+==========================*/
+.empty-tab {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+
+  h2 {
+    margin-top: 40px;
+    color: rgba(var(--dark-text), 1);
+  }
+
+  h5 {
+    color: rgba(var(--light-text), 1);
+    font-weight: 400;
+  }
+
+  .empty-bell {
+    margin-top: 100px;
+  }
+
+  .empty-cart {
+    margin-top: 70px;
+  }
+
+  .empty-search {
+    margin-top: 90px;
+  }
+
+  .empty-wishlist {
+    margin-top: 70px;
+  }
+}

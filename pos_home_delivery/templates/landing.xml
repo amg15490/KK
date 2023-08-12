@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="my_landing">
+            <t t-call="pos_home_delivery.my_layout">
+                <t t-set="content">
+                    <!-- header start -->
+                    <header>
+                        <div class="header-panel-lg" dir="rtl">
+                            <div class="custom-container">
+                                <img src="pos_home_delivery/static/assets/images/background.png"
+                                             class="img-fluid header-panel-lg"/>
+                            </div>
+                        </div>
+                    </header>
+                    <!-- header end -->
+
+                    <!-- Restaurant details section start -->
+                    <section>
+                        <div class="custom-container" dir="rtl">
+                            <div class="restaurant-details-box">
+                                <div class="restaurant-head">
+                                    <div class="name">
+                                        <img src="pos_home_delivery/static/assets/images/logo.png"
+                                             class="img-fluid restaurant-logo"/>
+                                        <div class="d-block ms-2">
+                                            <h3>
+                                                كشرى كده
+                                            </h3>
+                                            <h6>كشرى و طواجن و حلويات </h6>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                                <div class="restaurant-details">
+                                    <ul class="distance">
+                                        <li>
+                                            <h5><i class="ri-map-pin-fill theme-color"/>فروع المطعم
+                                            </h5>
+                                        </li>
+                                        <li>
+                                            <i class="ri-map-pin-fill theme-color"/>
+                                            شارع اللبيني_ بجوار مدرسة علوي_ أمام شارع الشيشيني.
+                                        </li>
+                                        <li>
+                                            <i class="ri-map-pin-fill theme-color"></i>
+                                            ۳ (أ) مساكن الشركة الوطنية للإسكان_ أخر شارع فيصل.
+                                        </li>
+                                        <li>
+                                            <i class="ri-map-pin-fill theme-color"></i>
+                                            ۱ شارع عباس أنور_ بجوار فلفلة_ مريوطية_ فيصل.
+                                        </li>
+                                    </ul>
+
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <!-- Restaurant details section end -->
+
+<!--                    <ul class="nav nav-pills" id="pills-tab" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="new-tab" data-bs-toggle="pill" data-bs-target="#new" type="button" role="tab">New</button>
+          </li>
+
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="used-tab" data-bs-toggle="pill" data-bs-target="#used" type="button" role="tab">Used</button>
+          </li>
+
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="expired-tab" data-bs-toggle="pill" data-bs-target="#expired" type="button" role="tab">Expired</button>
+          </li>
+        </ul>
+        -->
+
+<!--                    &lt;!&ndash; filter section start  &ndash;&gt;-->
+<!--                    <section class="food-filter" dir="rtl">-->
+<!--                        <div class="custom-container">-->
+<!--                            <ul class="food-symbol">-->
+<!--                                <li>-->
+<!--                                    <a href="#" class="food-types active">-->
+<!--                                        <i class="ri-award-fill award"/>-->
+<!--                                        <h6>كشرى</h6>-->
+<!--                                        <i class="ri-close-line close"></i>-->
+<!--                                    </a>-->
+<!--                                </li>-->
+<!--                                <li>-->
+<!--                                    <a href="#" class="food-types ">-->
+<!--                                       <i class="ri-award-fill award"/>-->
+<!--                                        <h6>طواجن</h6>-->
+<!--                                        <i class="ri-close-line close"></i>-->
+<!--                                    </a>-->
+<!--                                </li>-->
+<!--                                <li>-->
+<!--                                    <a href="#" class="food-types">-->
+<!--                                        <i class="ri-award-fill award"/>-->
+<!--                                        <h6>حلويات</h6>-->
+<!--                                        <i class="ri-close-line close"></i>-->
+<!--                                    </a>-->
+<!--                                </li>-->
+<!--                            </ul>-->
+<!--                        </div>-->
+<!--                    </section>-->
+<!--                    &lt;!&ndash; filter section end  &ndash;&gt;-->
+
+
+                    <!-- food section start -->
+                    <section class="food-list-section section-b-space">
+                        <div class="custom-container" dir="rtl">
+
+                            <div class="list-box">
+                                <h3 class="fw-semibold dark-text">القائمة</h3>
+                                <div class="accordion food-accordion" id="accordionPanelsStayOpenaccordion1">
+                                    <ul class="nav nav-pills" id="pills-tab" role="tablist">
+                                        <li class="nav-item" role="presentation">
+                                            <button class="nav-link active" id="koshery" data-bs-toggle="pill"
+                                                    data-bs-target="#new" type="button" role="tab">كشرى
+                                            </button>
+                                        </li>
+
+                                        <li class="nav-item" role="presentation">
+                                            <button class="nav-link" id="tagen" data-bs-toggle="pill"
+                                                    data-bs-target="#used"
+                                                    type="button" role="tab">طواجن
+                                            </button>
+                                        </li>
+
+                                        <li class="nav-item" role="presentation">
+                                            <button class="nav-link " id="sweets" data-bs-toggle="pill"
+                                                    data-bs-target="#expired" type="button" role="tab">حلويات
+                                            </button>
+                                        </li>
+                                    </ul>
+                                    <t t-set="products" t-value="request.env['product.template'].sudo().search([])"/>
+                                    <t t-foreach="request.env['product.category'].sudo().search([]) " t-as="Category">
+                                        <t t-if="Category.parent_id.name == 'Menu'">
+                                             <div class="accordion-item">
+                                            <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                                                <button class="accordion-button collapsed" type="button"
+                                                        data-bs-toggle="collapse"
+                                                        t-attf-data-bs-target="#collapse_#{Category.id}"
+                                                        aria-expanded="true" t-attf-aria-controls="collapse_#{Category.id}">
+                                                    <t t-esc="Category.name"/>
+                                                </button>
+                                            </h2>
+                                            <div t-attf-id="collapse_#{Category.id}"
+                                                 class="accordion-collapse collapse show"
+                                                 aria-labelledby="headingOne" data-bs-parent="#accordionExample ">
+                                                <div class="accordion-body">
+                                                    <t t-foreach="products" t-as="menu">
+                                                        <t t-if="menu.categ_id.id == Category.id">
+
+                                                            <div class="product-box2 mt-4" >
+
+                                                                        <div class="product-content">
+                                                                           <br> </br>
+                                                                            <br> </br>
+                                                                                <h5 class="product-name">
+                                                                                    <t t-esc="menu.name"/>
+                                                                                </h5>
+
+                                                                        </div>
+                                                                        <div class="product-img">
+                                                                            <a href="#product-popup"
+                                                                               data-bs-toggle="offcanvas">
+                                                                                <t t-if="not menu.image_1920">
+                                                                                    <img src="pos_home_delivery\static\assets\images\vp1.png"
+                                                                                     class="img-fluid img" alt="vp1"/>
+                                                                                </t>
+                                                                                <t t-if="menu.image_1920">
+                                                                                    <img t-attf-src="data:image/png;base64,{{ menu.image_1920 }}"
+                                                                                     class="img-fluid img" alt="vp1"/>
+                                                                                </t>
+
+                                                                            </a>
+                                                                            <div class="add-btn">
+                                                                                <a class="btn btn-outline"
+                                                                                   data-bs-target="#add-product"
+                                                                                   data-bs-toggle="modal">
+                                                                                    <span>EGP
+                                                                                        <t t-esc="menu.list_price"/>
+                                                                                    </span>
+                                                                                </a>
+                                                                            </div>
+                                                                            <div class="plus-minus">
+                                                                                <i class="ri-subtract-line sub"></i>
+                                                                                <input type="number" value="1" min="1"
+                                                                                       max="10"/>
+                                                                                <i class="ri-add-line add"></i>
+                                                                            </div>
+                                                                            <br/>
+                                                                        </div>
+                                                            </div>
+                                                        </t>
+                                                    </t>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        </t>
+                                    </t>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </section>
+                    <!-- food section end -->
+
+<!--                    &lt;!&ndash; panel-space start &ndash;&gt;-->
+<!--                    <section class="panel-space"></section>-->
+<!--                    &lt;!&ndash; panel-space end &ndash;&gt;-->
+
+<!--                    &lt;!&ndash; filter offcanvas start &ndash;&gt;-->
+<!--                    <div class="modal filter-modal" id="add-product" tabindex="-1">-->
+<!--                        <div class="modal-dialog modal-fullscreen">-->
+<!--                            <div class="modal-content">-->
+<!--                                <div class="custom-container">-->
+<!--                                    <div class="filter-header section-t-space">-->
+<!--                                        <h1 class="title">Custom Food</h1>-->
+<!--                                        <a href="#" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></a>-->
+<!--                                    </div>-->
+<!--                                    <div class="filter-body section-t-space">-->
+<!--                                        <div class="horizontal-product-box">-->
+<!--                                            <div class="product-img">-->
+<!--                                                <img class="img-fluid img"-->
+<!--                                                     src="/elmenus/static/assets/images/product/rp1.png" alt="rp1"/>-->
+<!--                                            </div>-->
+<!--                                            <div class="product-content">-->
+<!--                                                <h5>Mexican Shred Beef</h5>-->
+<!--                                                <h6>Hot beef stick</h6>-->
+<!--                                                <div class="plus-minus">-->
+<!--                                                    <i class="ri-subtract-line sub"></i>-->
+<!--                                                    <input type="number" value="1" min="1" max="10"/>-->
+<!--                                                    <i class="ri-add-line add"></i>-->
+<!--                                                </div>-->
+<!--                                                <img class="red-symbol"-->
+<!--                                                     src="/elmenus/static/assets/images/svg/nonveg.svg" alt="non-veg"/>-->
+<!--                                                <h3 class="product-price">$40</h3>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+
+<!--                                        <div class="filter-box section-t-space">-->
+<!--                                            <h3 class="fw-semibold dark-text">Choose Size</h3>-->
+
+<!--                                            <ul class="filter-list mt-3">-->
+<!--                                                <li>-->
+<!--                                                    <h5 class="product-size">Size S</h5>-->
+<!--                                                    <div class="form-check product-price">-->
+<!--                                                        <label class="form-check-label" for="reverseCheck1">$18</label>-->
+<!--                                                        <input class="form-check-input" type="checkbox" value=""-->
+<!--                                                               id="reverseCheck1"/>-->
+<!--                                                    </div>-->
+<!--                                                </li>-->
+<!--                                                <li>-->
+<!--                                                    <h5 class="product-size">Size M</h5>-->
+<!--                                                    <div class="form-check product-price">-->
+<!--                                                        <label class="form-check-label" for="reverseCheck1">$20</label>-->
+<!--                                                        <input class="form-check-input" type="checkbox"-->
+<!--                                                               id="reverseCheck2"-->
+<!--                                                               checked="true"/>-->
+<!--                                                    </div>-->
+<!--                                                </li>-->
+<!--                                                <li>-->
+<!--                                                    <h5 class="product-size">Size L</h5>-->
+<!--                                                    <div class="form-check product-price">-->
+<!--                                                        <label class="form-check-label" for="reverseCheck1">$22</label>-->
+<!--                                                        <input class="form-check-input" type="checkbox" value=""-->
+<!--                                                               id="reverseCheck3"/>-->
+<!--                                                    </div>-->
+<!--                                                </li>-->
+<!--                                            </ul>-->
+<!--                                        </div>-->
+
+<!--                                        <div class="body-title section-t-space">-->
+<!--                                            <h3 class="fw-semibold dark-text">Choose Size</h3>-->
+
+<!--                                            <ul class="filter-list mt-3">-->
+<!--                                                <li>-->
+<!--                                                    <h5 class="product-size">Chili sauce</h5>-->
+<!--                                                    <div class="form-check product-price">-->
+<!--                                                        <label class="form-check-label" for="reverseCheck1">$18</label>-->
+<!--                                                        <input class="form-check-input" type="checkbox" value=""-->
+<!--                                                               id="reverseCheck4"/>-->
+<!--                                                    </div>-->
+<!--                                                </li>-->
+<!--                                                <li>-->
+<!--                                                    <h5 class="product-size">Mustard</h5>-->
+<!--                                                    <div class="form-check product-price">-->
+<!--                                                        <label class="form-check-label" for="reverseCheck1">$20</label>-->
+<!--                                                        <input class="form-check-input" type="checkbox" value=""-->
+<!--                                                               id="reverseCheck5" checked="true"/>-->
+<!--                                                    </div>-->
+<!--                                                </li>-->
+<!--                                                <li>-->
+<!--                                                    <h5 class="product-size">Special dipping sauce</h5>-->
+<!--                                                    <div class="form-check product-price">-->
+<!--                                                        <label class="form-check-label" for="reverseCheck1">$22</label>-->
+<!--                                                        <input class="form-check-input" type="checkbox" value=""-->
+<!--                                                               id="reverseCheck6"/>-->
+<!--                                                    </div>-->
+<!--                                                </li>-->
+<!--                                            </ul>-->
+<!--                                        </div>-->
+<!--                                        <div class="body-title d-flex justify-content-between section-t-space section-b-space">-->
+<!--                                            <h3 class="fw-semibold dark-text d-flex align-items-center">Grand Total</h3>-->
+<!--                                            <h2 class="theme-color">$40</h2>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                    <div class="filter-footer">-->
+<!--                                        <a href="#" class="btn theme-btn apply-btn w-100" data-bs-dismiss="modal"-->
+<!--                                           data-bs-toggle="offcanvas">Apply-->
+<!--                                        </a>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    &lt;!&ndash; filter offcanvas end &ndash;&gt;-->
+
+<!--                    &lt;!&ndash; cart popup start &ndash;&gt;-->
+<!--                    <div class="cart-popup">-->
+<!--                        <div class="price-items">-->
+<!--                            <h3>$18</h3>-->
+<!--                            <h6>2 item Added</h6>-->
+<!--                        </div>-->
+<!--                        <a href="/cart" class="btn theme-btn cart-btn mt-0">View Cart</a>-->
+<!--                    </div>-->
+<!--                    &lt;!&ndash; cart popup end &ndash;&gt;-->
+
+<!--                    &lt;!&ndash; product-popup offcanvas start &ndash;&gt;-->
+
+<!--                    <div class="offcanvas fade offcanvas-bottom product-detail-popup" tabindex="-1" id="product-popup">-->
+<!--                        <div class="product-box-modal ratio_40">-->
+<!--                            <div class="product-img">-->
+<!--                                <img class="bg-img" src="/elmenus/static/assets/images/product/rp1.png" alt="rp1"/>-->
+<!--                            </div>-->
+<!--                            <div class="product-content">-->
+<!--                                <div class="product-info">-->
+<!--                                    <img class="img" src="/elmenus/static/assets/images/svg/nonveg.svg" alt="non-veg"/>-->
+<!--                                    <h5 class="product-name">Mexican Shred Beef</h5>-->
+<!--                                    <div class="d-flex align-items-center gap-2 mb-2">-->
+<!--                                        <ul class="rating-stars">-->
+<!--                                            <li>-->
+<!--                                                <i class="ri-star-fill stars"></i>-->
+<!--                                            </li>-->
+<!--                                            <li>-->
+<!--                                                <i class="ri-star-fill stars"></i>-->
+<!--                                            </li>-->
+<!--                                            <li>-->
+<!--                                                <i class="ri-star-fill stars"></i>-->
+<!--                                            </li>-->
+<!--                                            <li>-->
+<!--                                                <i class="ri-star-fill stars"></i>-->
+<!--                                            </li>-->
+<!--                                            <li>-->
+<!--                                                <i class="ri-star-fill stars"></i>-->
+<!--                                            </li>-->
+<!--                                        </ul>-->
+<!--                                        <h5 class="dark-text">1k+ Rating</h5>-->
+<!--                                    </div>-->
+<!--                                    <div class="product-price">-->
+<!--                                        <h6 class="fw-semibold">-->
+<!--                                            <span>$6</span>-->
+<!--                                            / $12-->
+<!--                                        </h6>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                                <div class="plus-minus">-->
+<!--                                    <i class="ri-subtract-line sub"></i>-->
+<!--                                    <input type="number" value="1" min="1" max="10"/>-->
+<!--                                    <i class="ri-add-line add"></i>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <p>A super easy Mexican style shredded beef cooked in a slow cooker with smoky chipotle-->
+<!--                                chilies-->
+<!--                                with a hint of cocoa and cinnamon.-->
+<!--                            </p>-->
+<!--                            <ul class="ingredient-list">-->
+<!--                                <li>2-3 pounds beef roast (such as chuck, eye of round, etc.)</li>-->
+<!--                                <li>1 tablespoon ground chipotle chilis</li>-->
+<!--                                <li>2 tablespoons ground ancho chilis</li>-->
+<!--                                <li>1 teaspoon ground cumin</li>-->
+<!--                                <li>1 tablespoon oregano</li>-->
+<!--                            </ul>-->
+<!--                        </div>-->
+<!--                    </div>-->
+
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

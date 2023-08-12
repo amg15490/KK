@@ -1,0 +1,51 @@
+/*=====================
+    tab CSS start
+==========================*/
+.nav {
+    border-bottom: 1px solid rgba(var(--dashed-line), 0.5);
+    gap: 5px;
+
+    .nav-item {
+        .nav-link {
+            color: rgba(var(--light-text), 1);
+            position: relative;
+            padding: 10px;
+
+            &.active {
+                color: rgba(var(--theme-color), 1);
+                background-color: rgba(var(--white), 1);
+
+                &::after {
+                    content: "";
+                    position: absolute;
+                    left: 0;
+                    top: 45%;
+                    transform: translate(-50%);
+                    width: 5px;
+                    height: 5px;
+                    background-color: rgba(var(--theme-color), 1);
+                    border-radius: 100%;
+                }
+
+                .nav-link {
+                    &::after {
+                        content: "";
+                        position: absolute;
+                        left: 0;
+                        top: 50%;
+                        transform: translate(-50%);
+                        width: 5px;
+                        height: 5px;
+                        background-color: rgba(var(--theme-color), 1);
+                        border-radius: 100%;
+
+                        [dir="rtl"] & {
+                            left: unset;
+                            right: 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
