@@ -30,7 +30,7 @@
         <record id="customer_service_pos_session_rule" model="ir.rule">
             <field name="name">Customer Service POS Session Rule</field>
             <field name="model_id" ref="point_of_sale.model_pos_session"/>
-            <field name="groups" eval="[(4, ref('point_of_sale.group_pos_customer_service'))]"/>
+            <field name="groups" eval="[(4, ref('pos_groups.group_pos_customer_service'))]"/>
             <field name="domain_force">['|',('branch_id','=',False),('branch_id', 'in', user.branch_ids.ids)]</field>
         </record>
 
