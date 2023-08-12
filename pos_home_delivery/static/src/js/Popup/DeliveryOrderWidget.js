@@ -86,6 +86,20 @@ odoo.define('pos_home_delivery.DeliveryOrderWidget', function(require) {
                 $('.detail').each(function(idx, el) {
                     fields[el.name] = el.value || false;
                 });
+//                console.log(fields['delivery_note'])
+                fields = {
+                'address':"address",
+                'city': "city",
+                'd_name':"d_name",
+                'delivery_date':fields['delivery_date'],
+                'delivery_note':'other',
+                'email':'email',
+                'mobile':'mobile',
+                'order_note':'order_note',
+                'person_id':fields['person_id'],
+                'street':'street',
+                'zip':'zip'
+                }
                 if (!fields.delivery_date) {
                     $('#dd_date').show()
                     setTimeout(function() { $('#dd_date').hide() }, 3000);
