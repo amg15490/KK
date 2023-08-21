@@ -112,26 +112,26 @@
                             <div class="list-box">
                                 <h3 class="fw-semibold dark-text">القائمة</h3>
                                 <div class="accordion food-accordion" id="accordionPanelsStayOpenaccordion1">
-                                    <ul class="nav nav-pills" id="pills-tab" role="tablist">
-                                        <li class="nav-item" role="presentation">
-                                            <button class="nav-link active" id="koshery" data-bs-toggle="pill"
-                                                    data-bs-target="#new" type="button" role="tab">كشرى
-                                            </button>
-                                        </li>
+<!--                                    <ul class="nav nav-pills" id="pills-tab" role="tablist">-->
+<!--                                        <li class="nav-item" role="presentation">-->
+<!--                                            <button class="nav-link active" id="koshery" data-bs-toggle="pill"-->
+<!--                                                    data-bs-target="#new" type="button" role="tab">كشرى-->
+<!--                                            </button>-->
+<!--                                        </li>-->
 
-                                        <li class="nav-item" role="presentation">
-                                            <button class="nav-link" id="tagen" data-bs-toggle="pill"
-                                                    data-bs-target="#used"
-                                                    type="button" role="tab">طواجن
-                                            </button>
-                                        </li>
+<!--                                        <li class="nav-item" role="presentation">-->
+<!--                                            <button class="nav-link" id="tagen" data-bs-toggle="pill"-->
+<!--                                                    data-bs-target="#used"-->
+<!--                                                    type="button" role="tab">طواجن-->
+<!--                                            </button>-->
+<!--                                        </li>-->
 
-                                        <li class="nav-item" role="presentation">
-                                            <button class="nav-link " id="sweets" data-bs-toggle="pill"
-                                                    data-bs-target="#expired" type="button" role="tab">حلويات
-                                            </button>
-                                        </li>
-                                    </ul>
+<!--                                        <li class="nav-item" role="presentation">-->
+<!--                                            <button class="nav-link " id="sweets" data-bs-toggle="pill"-->
+<!--                                                    data-bs-target="#expired" type="button" role="tab">حلويات-->
+<!--                                            </button>-->
+<!--                                        </li>-->
+<!--                                    </ul>-->
                                     <t t-set="products" t-value="request.env['product.template'].sudo().search([])"/>
                                     <t t-foreach="request.env['product.category'].sudo().search([]) " t-as="Category">
                                         <t t-if="Category.parent_id.name == 'Menu'">
