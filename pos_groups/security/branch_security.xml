@@ -5,6 +5,7 @@
 
         <record id="point_of_sale.group_pos_user" model="res.groups">
             <field name="name">Cashier</field>
+            <field name="category_id" ref="base.module_category_sales_point_of_sale"/>
         </record>
 
         <record id="group_pos_customer_service" model="res.groups">
@@ -13,10 +14,19 @@
             <field name="implied_ids" eval="[(4, ref('point_of_sale.group_pos_user'))]"/>
         </record>
 
-        <record id="point_of_sale.group_pos_manager" model="res.groups">
+        <record id="group_pos_manager_no_edit" model="res.groups">
             <field name="name">Manager</field>
+            <field name="category_id" ref="base.module_category_sales_point_of_sale"/>
             <field name="implied_ids" eval="[(6, 0, [ref('pos_groups.group_pos_customer_service')])]"/>
         </record>
+
+        <record id="point_of_sale.group_pos_manager" model="res.groups">
+            <field name="name">Admin</field>
+            <field name="category_id" ref="base.module_category_sales_point_of_sale"/>
+            <field name="implied_ids" eval="[(6, 0, [ref('pos_groups.group_pos_manager_no_edit')])]"/>
+        </record>
+
+
 
 
         <record id="cashier_pos_session_rule" model="ir.rule">
