@@ -1,0 +1,39 @@
+<?xml version="1.0" ?>
+<odoo>
+
+    <data>
+
+
+
+        <record id="cashier_pos_rule" model="ir.rule">
+            <field name="name">Cashier POS Rule</field>
+            <field name="model_id" ref="point_of_sale.model_pos_config"/>
+            <field name="groups" eval="[(4, ref('point_of_sale.group_pos_user'))]"/>
+            <field name="domain_force">[('pos_users', 'in', user.id)]</field>
+        </record>
+
+        <record id="customer_service_pos_rule" model="ir.rule">
+            <field name="name">Customer Service POS Rule</field>
+            <field name="model_id" ref="point_of_sale.model_pos_config"/>
+            <field name="groups" eval="[(4, ref('pos_groups.group_pos_customer_service'))]"/>
+            <field name="domain_force">['|',('branch_id','=',False),('branch_id', 'in', user.branch_ids.ids)]</field>
+        </record>
+
+
+
+<!--        <record id="customer_service_pos_session_rule" model="ir.rule">-->
+<!--            <field name="name">Customer Service POS Session Rule</field>-->
+<!--            <field name="model_id" ref="point_of_sale.model_pos_session"/>-->
+<!--            <field name="groups" eval="[(4, ref('pos_groups.group_pos_customer_service'))]"/>-->
+<!--            <field name="domain_force">['|',('branch_id','=',False),('branch_id', 'in', user.branch_ids.ids)]</field>-->
+<!--        </record>-->
+
+<!--        <record id="manager_pos_session_rule" model="ir.rule">-->
+<!--            <field name="name">Manager POS Session Rule</field>-->
+<!--            <field name="model_id" ref="point_of_sale.model_pos_session"/>-->
+<!--            <field name="groups" eval="[(4, ref('point_of_sale.group_pos_manager'))]"/>-->
+<!--            <field name="domain_force">['|',('branch_id','=',False),('branch_id', 'in', user.branch_ids.ids)]</field>-->
+<!--        </record>-->
+
+    </data>
+</odoo>

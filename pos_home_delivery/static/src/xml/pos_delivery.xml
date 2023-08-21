@@ -222,12 +222,25 @@
 											<span class='label' style="padding: 10px;margin-left: -14px;">Delivery person</span>
 											<select class="detail person_id" name='person_id' required="required" style="margin-left: 55px;padding: 8px;border-radius: 5px;">
 												<option class="s_small" value=''>Set Delivery Person</option>
-												<t t-foreach='env.pos.users' t-as="person" t-key="person.id">
-													<option t-att-value='person.id' t-att-selected='person_id == person.id or None'> 
+<!--												<t t-foreach='env.pos.users' t-as="person" t-key="person.id">-->
+												<t t-foreach='partners' t-as="person" t-key="person.id">
+<!--													<t t-if="person.name == 'Administrator'">-->
+													<option t-att-value='person.id' t-att-selected='person_id == person.id or None'>
 														<t t-esc='person.name'/>
+<!--														<t t-esc='person.id'/>-->
+<!--														<t t-esc='1 in person.groups_id'/>-->
 													</option>
+<!--													</t>-->
 												</t>
 											</select>
+
+
+
+										</div>
+										<div>
+<!--											<t t-esc="Object.keys(env.pos.pos_model)" />-->
+<!--											<t t-esc="Object.keys(env.pos.users[0])" />-->
+											<t t-esc="branch[0]['branch_id'][1]" />
 										</div>
 										<div class='delivery-detail2 required-field'  style="margin:15px 0 0 5px;">
 											<span class='label' style="padding: 10px;margin-left: -14px;">Delivery Note</span>

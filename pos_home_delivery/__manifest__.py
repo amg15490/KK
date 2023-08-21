@@ -14,6 +14,7 @@
     'depends': ['base','pos_restaurant',],
     'data': [
         'data/data.xml',
+        'security/pos_security.xml',
         'security/ir.model.access.csv',
         'views/pos_delivery_view.xml',
         'templates/layout.xml',

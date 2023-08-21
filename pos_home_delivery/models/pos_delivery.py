@@ -399,3 +399,9 @@ class PosDeliveryOrderLine(models.Model):
 	item_rate = fields.Float('Price', digits=0)
 	pos_delivery_id = fields.Many2one('pos.delivery.order', 'Delivery order')
 	item_note = fields.Char('Item Note', size=72)
+
+
+class ResUsers(models.Model):
+    _inherit = "res.users"
+
+    is_delivery = fields.Boolean()

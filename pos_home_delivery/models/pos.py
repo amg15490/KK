@@ -22,6 +22,8 @@ class PosConfig(models.Model):
 	_inherit = 'pos.config'
 
 	pos_verify_delivery = fields.Boolean(string='Home Delivery')
+	pos_users = fields.Many2many(
+	    comodel_name='res.users', relation='pos_config_users_rel')
 
 
 class ResConfigSettings(models.TransientModel):
