@@ -16,6 +16,6 @@ class Kosharykda(http.Controller):
         return http.request.render('pos_home_delivery.my_landing')
 
     @http.route('/menu', auth='public')
-    def landing2(self, **kw):
+    def menu(self, **kw):
         # return "hello world"
         return http.request.render('pos_home_delivery.my_menu')
