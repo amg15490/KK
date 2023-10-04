@@ -1,0 +1,1 @@
+git log --since="last year" --pretty=format:'%h,%an,%ar,%s' > log.csv
